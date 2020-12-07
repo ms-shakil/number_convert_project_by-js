@@ -1,0 +1,34 @@
+html,body{
+    margin: 0;
+}
+.convert_txt{
+    margin-top: 50px;
+    font-size: 50px;
+    font-weight: 20px;
+}
+.select{
+    background-color: white;
+    padding: 8px 12px;
+}
+.select-area{
+    text-align: center;
+}
+.card-area{
+    width: 40%;
+    background-color:#EEE8D5;
+    margin-top: 30px;
+    margin-left: 30%;  
+    padding: 2%;
+}
+@media screen and ( max-width:576px){
+    .select-area{
+        text-align: inherit;
+        margin-left: 15px;    
+    }
+    .card-area{
+        width:100%;
+        background-color:#EEE8D5;
+        margin-left: 0px;
+        padding: 4%;
+    }
+}
