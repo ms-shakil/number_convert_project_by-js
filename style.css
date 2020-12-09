@@ -32,3 +32,8 @@ html,body{
         padding: 4%;
     }
 }
+.error__show {
+    color: red;
+    margin-bottom: 10px;
+  }
+  

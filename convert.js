@@ -6,6 +6,9 @@ click_button.onclick = function(){
 var input_b =document.getElementById("Select1").value
 var convert_b =document.getElementById("optionB").value
 var input_box = document.getElementById("input_area").value
+var isValid = false
+var showError = document.getElementById('error-show')
+
 // function start
 function decimal_to (number,convert){
     var lst =[]
@@ -128,22 +131,33 @@ else if(inp =="binary"){
   var inp_val =input_box
   var inp2 =convert_b
   var lst = inp_val.split('')
-  if(inp2 =="decimal"){
-   var val = 2
-   var zz = other_to_decimal(lst,val)
-   textarea.innerHTML  = zz
+  for(var i =0; i <lst.length;i++ ){
+    if(parseInt(lst[i]) != 1 && parseInt(lst[i]) != 0 ){
+      isValid = true
+    }
   }
-  else if(inp2 =="octal"){
-    var val = 2
-   var kk = other_to_decimal(lst,val)
-   var zz = decimal_to(kk,8)
-   textarea.innerHTML  = zz.join("")
-  }
-  else if(inp2 =="hexadecimal"){
-    var val = 2
-   var kk = other_to_decimal(lst,val)
-   var zz = decimal_to(kk,16)
-   textarea.innerHTML  = zz.join("")
+  if(isValid){
+    showError.innerHTML ="Please write the correct input"
+
+  }else{
+    if(inp2 =="decimal"){
+      var val = 2
+      var zz = other_to_decimal(lst,val)
+      textarea.innerHTML  = zz
+     }
+     else if(inp2 =="octal"){
+       var val = 2
+      var kk = other_to_decimal(lst,val)
+      var zz = decimal_to(kk,8)
+      textarea.innerHTML  = zz.join("")
+     }
+     else if(inp2 =="hexadecimal"){
+       var val = 2
+      var kk = other_to_decimal(lst,val)
+      var zz = decimal_to(kk,16)
+      textarea.innerHTML  = zz.join("")
+     }
+     showError.innerHTML = '' 
   }
 }
 // octal
@@ -151,46 +165,80 @@ else if(inp =="octal"){
   var inp_val = input_box
   var inp2 = convert_b
   var lst = inp_val.split('')
+  for(var i = 0; i<lst.length; i++){
+    if(parseInt(lst[i])>7){
+      isValid = true
+    }
+  }
+ if(isValid){
+  showError.innerHTML = 'Please write the correct input'
+ } else{
   if(inp2 =="decimal"){
-   var val = 8
-   var zz = other_to_decimal(lst,val)
-   textarea.innerHTML  = zz  
-  }
-  else if(inp2 =="binary"){
     var val = 8
-   var kk = other_to_decimal(lst,val)
-   var zz = decimal_to(kk,2)
-   textarea.innerHTML  = zz.join("")
-  }
-  else if(inp2 =="hexadecimal"){
-    var val = 8
-   var kk = other_to_decimal(lst,val)
-   var zz = decimal_to(kk,16)
-   textarea.innerHTML  = zz.join("")
-  }
+    var zz = other_to_decimal(lst,val)
+    textarea.innerHTML  = zz  
+   }
+   else if(inp2 =="binary"){
+     var val = 8
+    var kk = other_to_decimal(lst,val)
+    var zz = decimal_to(kk,2)
+    textarea.innerHTML  = zz.join("")
+   }
+   else if(inp2 =="hexadecimal"){
+     var val = 8
+    var kk = other_to_decimal(lst,val)
+    var zz = decimal_to(kk,16)
+    textarea.innerHTML  = zz.join("")
+   }
+   showError.innerHTML = ''
+ }
 }
 // hexa
 else if(inp =="hexadecimal"){
     var inp_val = input_box
     var inp2 = convert_b
     var lst = inp_val.split('')
+    for(var i = 0; i<lst.length; i++){
+      if(lst[i] == 'a' || lst[i] == 'A'){
+        lst.splice(i, 1, 10)
+      } else if(lst[i] == 'b' || lst[i] == 'B'){
+        lst.splice(i, 1, 11)
+      } else if(lst[i] == 'c' || lst[i] == 'C'){
+        lst.splice(i, 1, 12)
+      } else if(lst[i] == 'd' || lst[i] == 'D'){
+        lst.splice(i, 1, 13)
+      } else if(lst[i] == 'e' || lst[i] == 'E') {
+        lst.splice(i, 1, 14)
+      } else if (lst[i] == 'f' || lst[i] == 'F'){
+        lst.splice(i, 1, 15)
+      }
+
+      if(isNaN(parseInt(lst[i]))){
+        isValid = true
+      }
+    } 
+  if(isValid){
+    showError.innerHTML = 'Please write the correct input'
+  }else{
     if(inp2 =="decimal"){
-     var val = 16
-     var zz = other_to_decimal(lst,val)
-     textarea.innerHTML  = zz  
-    }
-    else if(inp2 =="binary"){
       var val = 16
-     var kk = other_to_decimal(lst,val)
-     var zz = decimal_to(kk,2)
-     textarea.innerHTML  = zz.join("")
-    }
-    else if(inp2 =="octal"){
-      var val = 16
-     var kk = other_to_decimal(lst,val)
-     var zz = decimal_to(kk,8)
-     textarea.innerHTML  = zz.join("")
-    }
+      var zz = other_to_decimal(lst,val)
+      textarea.innerHTML  = zz  
+     }
+     else if(inp2 =="binary"){
+       var val = 16
+      var kk = other_to_decimal(lst,val)
+      var zz = decimal_to(kk,2)
+      textarea.innerHTML  = zz.join("")
+     }
+     else if(inp2 =="octal"){
+       var val = 16
+      var kk = other_to_decimal(lst,val)
+      var zz = decimal_to(kk,8)
+      textarea.innerHTML  = zz.join("")
+     }
+     showError.innerHTML = ''
   }
+}
 // main area end
 }
