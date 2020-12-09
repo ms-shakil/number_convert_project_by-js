@@ -108,24 +108,33 @@ var inp = input_b
 if (inp =="decimal"){
   var inp_val =input_box
   var inp2 =convert_b
-  if(inp2 =="octal"){
-     var val = 8
+  if(isNaN(inp_val)){
+    isValid = true
+  }
+  if(isValid){
+    showError.innerHTML ="Please write the correct input"
+
+  }else{
+    if(inp2 =="octal"){
+      var val = 8
+      var kk = decimal_to(inp_val, val)
+      var zz = kk.join("")
+      textarea.innerHTML  = zz
+   }
+   else if(inp2 =="binary"){
+     var val = 2
      var kk = decimal_to(inp_val, val)
      var zz = kk.join("")
      textarea.innerHTML  = zz
-  }
-  else if(inp2 =="binary"){
-    var val = 2
-    var kk = decimal_to(inp_val, val)
-    var zz = kk.join("")
-    textarea.innerHTML  = zz
-  }
-  else if(inp2 =="hexadecimal"){
-    var val = 16
-    var kk = decimal_to(inp_val, val)
-    var zz = kk.join("")
-    textarea.innerHTML  = zz
-  }
+   }
+   else if(inp2 =="hexadecimal"){
+     var val = 16
+     var kk = decimal_to(inp_val, val)
+     var zz = kk.join("")
+     textarea.innerHTML  = zz
+   }
+
+  } 
 }
 else if(inp =="binary"){
   var inp_val =input_box
