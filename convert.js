@@ -133,7 +133,7 @@ if (inp =="decimal"){
      var zz = kk.join("")
      textarea.innerHTML  = zz
    }
-
+   showError.innerHTML = '' 
   } 
 }
 else if(inp =="binary"){
