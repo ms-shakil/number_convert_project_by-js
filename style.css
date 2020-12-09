@@ -23,7 +23,7 @@ html,body{
 @media screen and ( max-width:576px){
     .select-area{
         text-align: inherit;
-        margin-left: 15px;    
+        margin-left: 10px;    
     }
     .card-area{
         width:100%;
